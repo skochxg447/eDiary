@@ -1,0 +1,9 @@
+pylint
+pytest
+click
+black
+pytest-cov
+flask
+SQLAlchemy
+Flask-SQLAlchemy
+flask-wtf
