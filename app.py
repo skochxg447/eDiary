@@ -25,18 +25,18 @@ import forms
 @app.route("/")
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+    # if request.method == 'POST':
+    #     title = request.form['title']
+    #     body = request.form['body']
     
-        entry = models.Entry(title=form.title.data, body=form.body.data, date=datetime.utcnow())
-        db.session.add(entry)
-        db.session.commit()
-        flash("Entry added")
-        return redirect(url_for("index"))
+    #     entry = models.Entry(title=form.title.data, body=form.body.data, date=datetime.utcnow())
+    #     db.session.add(entry)
+    #     db.session.commit()
+    #     flash("Entry added")
+    #     return redirect(url_for("index"))
     return render_template('index.html')
 
-@app.route('/submit_form', methods=['GET'])
+@app.route("/submit_form", methods=["GET", "POST"])
 def submit_form():
     title = request.form['title']
     body = request.form['body']
@@ -47,7 +47,7 @@ def submit_form():
         flash("Entry added")
         return redirect(url_for("index"))
 
-#     return 'Form submitted successfully!'
+    return 'Form submitted successfully!'
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)

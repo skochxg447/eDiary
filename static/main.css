@@ -563,4 +563,63 @@ body{background-color:#fff;font-size:14px;line-height:1.6;font-family:"Montserra
 
 .outer-nav li.is-vis:nth-child(5){-webkit-transition-delay:.16s;transition-delay:.16s}
 
+.day-title {
+  text-align: center;
+  margin-top: 10%;
+}
 
+.day-title::placeholder{  
+  color: #2ec20a;
+  opacity: .6;
+
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #2ec20a;
+  opacity: .6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #2ec20a;
+  opacity: .6;
+}
+
+.day-body::placeholder{
+  color: #2ec20a;
+  opacity: .6;
+}
+
+textarea#body {
+  display: block;
+  top:1px
+  margin: auto;
+  display: flex;
+  font-size:16px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #2ec20a;
+  opacity: .6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #2ec20a;
+    opacity: .6;
+}
+
+.mysubmit {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width:350px;max-width:100%;
+    line-height:40px;
+    font-size:16px;
+    font-weight:700;
+    text-transform:uppercase;
+    background-color:#2ec20a;
+    border:none;border-radius:0;
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    margin-bottom: 10%;
+}

@@ -165,12 +165,12 @@
           <!-- Contact Section -->
           <li class="l-section section">
             <div class="hire">
-              <h2>Describe Your Day</h2>
+              <h2><input class="day-title" type="text" id="name" name="name" placeholder="Title of Your Day" align="center"></h2>
               <!-- checkout formspree.io for easy form setup -->
-              <form class="work-request">
+              <form>
                 <div class="work-request--options">
                   <span class="options-a">
-                    <input id="opt-1" type="checkbox" value="app design">
+                    <input id="opt-1" type="checkbox" value="Productive">
                     <label for="opt-1">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -180,7 +180,7 @@
                       </svg>
                       Productive
                     </label>
-                    <input id="opt-2" type="checkbox" value="graphic design">
+                    <input id="opt-2" type="checkbox" value="Dissappointing">
                     <label for="opt-2">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -190,7 +190,7 @@
                       </svg>
                       Dissappointing
                     </label>
-                    <input id="opt-3" type="checkbox" value="motion design">
+                    <input id="opt-3" type="checkbox" value="Electrifying">
                     <label for="opt-3">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -202,7 +202,7 @@
                     </label>
                   </span>
                   <span class="options-b">
-                    <input id="opt-4" type="checkbox" value="ux design">
+                    <input id="opt-4" type="checkbox" value="Lovely">
                     <label for="opt-4">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -212,7 +212,7 @@
                       </svg>
                       Lovely
                     </label>
-                    <input id="opt-5" type="checkbox" value="webdesign">
+                    <input id="opt-5" type="checkbox" value="Boring">
                     <label for="opt-5">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -222,7 +222,7 @@
                       </svg>
                       Boring
                     </label>
-                    <input id="opt-6" type="checkbox" value="marketing">
+                    <input id="opt-6" type="checkbox" value="Exciting">
                     <label for="opt-6">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -233,15 +233,16 @@
                       Exciting
                     </label>
                   </span>
-                <form method="post" action="/submit_form/">
-                  <br>
-                  <input type="text" name="title" placeholder="Title Your Day">
-                  <br>
-                  <textarea name="body" rows="10" cols="100" placeholder="What was your adventure today?" spellcheck="true"></textarea>
-                  <br><br>
-                  <input type="submit" value="Submit">
+                </div>
+              </form>
+                <form action="/submit_form" method="post">
+                  <textarea class="day-body" type="text" id="body" name="body" style="width: 100%; height: 40%;" placeholder="What was your adventure today?" spellcheck="true"></textarea>
+                  <div style="text-align:center;">
+                    <input class="mysubmit" type="submit" value="Submit" style="margin:0px auto; display:block;">
+                  </div>
                 </form>
                 </div>
+              </div>
             </div>
           </li>
 
