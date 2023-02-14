@@ -611,7 +611,7 @@ textarea#body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    width:350px;max-width:100%;
+    width:450px;max-width:100%;
     line-height:40px;
     font-size:16px;
     font-weight:700;
@@ -622,4 +622,69 @@ textarea#body {
     z-index: 1;
     justify-content: center;
     margin-bottom: 10%;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 85%;
+  position:relative;
+  z-index:20;
+}
+
+.card-body h3 {
+  margin: 0;
+  font-size: 1.2em;
+  z-index:20;
+  position:relative;
+}
+
+.card-body h4 {
+  margin: 0;
+  font-size: 1.0em;
+  color: gray;
+  position:relative;
+  z-index:20;
+}
+
+.card-body p {
+  margin: 0;
+  font-size: 0.8em;
+  color: gray;
+  position:relative;
+  z-index:20;
+}
+
+
+.list-container {
+  height: 450px;
+  top: 40%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index:20;
+}
+
+input[type="text"]#search {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  position:relative;
+  z-index:20;
+}
+
+.card-body {
+  height: 400px;
+  overflow: scroll;
+  position: relative;
+  width: 200%;
+  padding-right:-20px;
+  position:relative;
+  z-index:20;
 }
