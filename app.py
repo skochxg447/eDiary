@@ -57,24 +57,14 @@ def submit_form():
 
         title = request.form['title']
         body = request.form['body']
+        tags = request.form['tags']
     
         entry = models.Entry(title=form.title.data, body=form.body.data, tags=form.tags.data, date=datetime.utcnow())
         db.session.add(entry)
         db.session.commit()
-        flash("Entry added")
+
         return redirect(url_for("index"))
-    return render_template('index.html', entries=entries)
-
-# @app.route("/list", methods=["GET", "POST"])
-# def list_data():
-#     entries = models.Entry.query.all()
-#     conn = sqlite3.connect('data.db')
-#     cur = conn.cursor()
-#     cur.execute('SELECT * FROM entry')
-#     data = cur.fetchall()
-#     conn.close()
-#     return render_template('index.html', data=data)
-
+    return render_template('index.html', lst=lst)
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)

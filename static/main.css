@@ -151,7 +151,7 @@ body{background-color:#fff;font-size:14px;line-height:1.6;font-family:"Montserra
 
 .section--prev{-webkit-transform:translateY(45px);transform:translateY(45px);-webkit-transition:-webkit-transform .4s ease-in-out;transition:-webkit-transform .4s ease-in-out;transition:transform .4s ease-in-out;transition:transform .4s ease-in-out, -webkit-transform .4s ease-in-out}
 
-.header{position:absolute;top:0;left:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:70px;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;z-index:10}
+.header{position:absolute;top:20px;left:10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:70px;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;z-index:10}
 
 /*.header--logo{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;text-decoration:none;color:#000}
 
@@ -359,11 +359,11 @@ body{background-color:#fff;font-size:14px;line-height:1.6;font-family:"Montserra
 
 .about--banner::before{content:"";position:absolute;top:20px;left:200px;-webkit-transform:rotate(-25deg);transform:rotate(-25deg);border:5px solid #2ec20a;border-right-color:transparent;border-bottom-color:transparent}
 
-.about--banner::after{content:"";position:absolute;top:75px;left:400px;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:10px;height:10px;background-color:#2ec20a}
+.about--banner::after{content:"";position:absolute;top:75px;left:385px;-webkit-transform:rotate(45deg);transform:rotate(45deg);width:10px;height:10px;background-color:#2ec20a}
 
 .about--banner h2{position:relative;margin-top:35px;font-size:68px;font-weight:900;line-height:1;z-index:1}
 
-.about--banner h2::before{content:"";position:absolute;top:57px;left:93px;width:30px;height:30px;background-color:#2ec20a;border-radius:50%}
+.about--banner h2::before{content:"";position:absolute;top:62px;left:95px;width:25px;height:25px;background-color:#2ec20a;border-radius:50%}
 
 .about--banner h2::after{content:"";position:absolute;top:255px;left:205px;width:10px;height:10px;background-color:#2ec20a}
 
@@ -591,7 +591,7 @@ body{background-color:#fff;font-size:14px;line-height:1.6;font-family:"Montserra
 
 textarea#body {
   display: block;
-  top:1px
+  top:1px;
   margin: auto;
   display: flex;
   font-size:16px;
@@ -611,7 +611,7 @@ textarea#body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    width:450px;max-width:100%;
+    width:350px;max-width:100%;
     line-height:40px;
     font-size:16px;
     font-weight:700;
@@ -661,30 +661,80 @@ textarea#body {
 
 
 .list-container {
-  height: 450px;
-  top: 40%;
-  right: 0;
-  transform: translate(-50%, -50%);
+  max-height: 500px;
+  width: 70%;
+  top: 52%;
+  right: 10px;
+  transform: translate(20%, -50%);
   position: absolute;
-  z-index:20;
+  z-index: 20;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .list-container {
+    width: 90%;
+    transform: translate(5%, -50%);
+  }
 }
 
 input[type="text"]#search {
-  width: 90%;
+  width: 40%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid lightgray;
   border-radius: 5px;
-  position:relative;
-  z-index:20;
+  position: absolute;
+  top: 17%;
+  right: 18%;
+  z-index: 21;
+}
+
+@media (max-width: 768px) {
+  input[type="text"]#search {
+    width: 50%;
+    right: 10%;
+  }
+}
+
+.list-container::-webkit-scrollbar {
+  width: 15px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: #5A5A5A;
+  border-radius: 10px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
 }
 
 .card-body {
-  height: 400px;
-  overflow: scroll;
+  height: 500px;
   position: relative;
-  width: 200%;
-  padding-right:-20px;
-  position:relative;
+  width: 110%;
   z-index:20;
+}
+
+.card:hover {
+  background-color: lightgray;
+}
+
+.card.active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 50%;
+  background-color: white;
+  z-index: 30;
+  padding: 20px;
+}
+
+.card.active h3, .card.active h4, .card.active p {
+  margin: 10px;
 }

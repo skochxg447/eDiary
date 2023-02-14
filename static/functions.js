@@ -276,26 +276,3 @@ $( document ).ready(function() {
   outerNav();
   workSlider();
   transitionLabels();
-
-const search = document.querySelector('#search');
-const listContainer = document.querySelector('.list-container');
-const cards = listContainer.querySelectorAll('.card');
-
-search.addEventListener('input', function() {
-  const filter = search.value.toUpperCase();
-
-  for (const card of cards) {
-    const h3 = card.querySelector('h3').textContent.toUpperCase();
-    const h4 = card.querySelector('h4').textContent.toUpperCase();
-    const p = card.querySelector('p').textContent.toUpperCase();
-
-    if (h3.includes(filter) || h4.includes(filter) || p.includes(filter)) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
-  }
-
-});
-
-
