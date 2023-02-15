@@ -33,6 +33,15 @@
               <span></span>
             </div><br>
             <button class="header--cta cta">New Entry</button>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flashes">
+            {% for category, message in messages %}
+            <div class="{{ category }}"><b>{{ message }}<b></div>
+            {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
             <div>
               <h1>eDiary</h1>
             </div>
@@ -92,21 +101,27 @@
                     </span>
                   </a>
                 </div>
-                  <input class="searchbar" type="text" id="search" placeholder="Search...">
-                  <div class="list-container">
-                    <div class="card-body">
-                      {% for item in lst %}
-                      <div class="card">
-                        <h3>{{ item[1] }}</h3>
-                        <h4>#{{ item[3] }}</h4>
-                        <h4>
-                          {{ item[2] }}
-                        </h4>
-                        <p>Added on {{ item[4] }}</p>
-                      </div>
-                      {% endfor %}
-                    </div>
+                <input class="searchbar" type="text" id="search" placeholder="Search...">
+                <div class="list-container">
+                  <div class="card-body">
+                    {% if lst %}
+                        {% for item in lst | reverse %}
+                        <div class="card"> 
+                          <h3>{{ item[1] }}</h3>
+                          <h4>#{{ item[3] }}</h4>
+                          <h5>
+                            {{ item[2] }}
+                          </h5>
+                          <p>Added on {{ item[4] }}</p>
+                        </div>
+                        {% endfor %}   
+                    {% else %}       
+                        <br> 
+                        <h1>{{ 'No eDiary entries yet. Scroll down to input one!' }}<h1>
+                        <centre><img src="../static/downarrow.png" alt="keep scrolling" /></centre>
+                    {% endif %}
                   </div>
+                </div>
 
                 <div class="about--options" position>
                   <a href="#0">
@@ -122,10 +137,10 @@
               <div class="hire">
                 <form action="/submit_form" method="post">
                   <h2><input class="day-title" type="text" id="title" name="title" placeholder="Title of Your Day" align="center"></h2>
-                  <!-- checkout formspree.io for easy form setup -->
+
                   <div class="work-request--options">
                     <span class="options-a">
-                      <input id="opt-1" type="checkbox" id="tags" name="tags">
+                      <input id="opt-1" type="checkbox" id="tag" name="tag" value="Productive">
                       <label for="opt-1">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -134,7 +149,7 @@
                         </svg>
                         Productive
                       </label>
-                      <input id="opt-2" type="checkbox" id="tags" name="tags">
+                      <input id="opt-2" type="checkbox" id="tag" name="tag" value="Dissappointing">
                       <label for="opt-2">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -143,7 +158,7 @@
                         </svg>
                         Dissappointing
                       </label>
-                      <input id="opt-3" type="checkbox" name="electrifying">
+                      <input id="opt-3" type="checkbox" name="tag" value="Electrifying">
                       <label for="opt-3">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -154,7 +169,7 @@
                       </label>
                     </span>
                     <span class="options-b">
-                      <input id="opt-4" type="checkbox" name="lovely">
+                      <input id="opt-4" type="checkbox" name="tag" value="Lovely">
                       <label for="opt-4">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -163,7 +178,7 @@
                         </svg>
                         Lovely
                       </label>
-                      <input id="opt-5" type="checkbox" name="boring">
+                      <input id="opt-5" type="checkbox" name="tag" value="Boring">
                       <label for="opt-5">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -172,7 +187,7 @@
                         </svg>
                         Boring
                       </label>
-                      <input id="opt-6" type="checkbox" name="exciting">
+                      <input id="opt-6" type="checkbox" name="tag" value="Exciting">
                       <label for="opt-6">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
                           <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
@@ -203,7 +218,9 @@
     <li>New</li>
   </ul>
   </div>
-
+<script>
+  window.scrollTo(0,document.body.scrollHeight/2);
+</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
     window.jQuery || document.write('<script src="../static/jquery-2.2.4.min.js"><\/script>')

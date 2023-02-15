@@ -1092,7 +1092,6 @@
     }), n(), s(), r()
 });
 
-
 const searchInput = document.querySelector('#search');
 const cards = document.querySelectorAll('.card');
 const listContainer = document.querySelector('.list-container');
@@ -1103,12 +1102,10 @@ searchInput.addEventListener('input', function() {
     cards.forEach(function(card) {
         const title = card.querySelector('h3').textContent.toLowerCase();
         const tag = card.querySelector('h4').textContent.toLowerCase();
+        const body = card.querySelector('h5').textContent.toLowerCase();
         const date = card.querySelector('p').textContent.toLowerCase();
-        const tags = Array.from(card.querySelectorAll('.tag')).map(function(tag) {
-            return tag.textContent.toLowerCase();
-        });
 
-        const cardText = `${title} ${tag} ${date} ${tags.join(' ')}`;
+        const cardText = `${title} ${tag} ${body} ${date}`;
 
         if (cardText.includes(searchTerm)) {
             card.style.display = 'block';
@@ -1118,34 +1115,16 @@ searchInput.addEventListener('input', function() {
     });
 });
 
-cards.forEach(function(card) {
-    card.addEventListener('click', function() {
-        const container = document.createElement('div');
-        container.classList.add('card-container');
 
-        const title = this.querySelector('h3').textContent;
-        const tag = this.querySelector('h4:last-of-type').textContent;
-        const date = this.querySelector('p').textContent;
-
-        const titleElem = document.createElement('h3');
-        titleElem.textContent = title;
-
-        const tagElem = document.createElement('h4');
-        tagElem.textContent = tag;
-
-        const dateElem = document.createElement('p');
-        dateElem.textContent = date;
-
-        container.appendChild(titleElem);
-        container.appendChild(tagElem);
-        container.appendChild(dateElem);
-
-        listContainer.appendChild(container);
-
-        container.addEventListener('click', function() {
-            listContainer.removeChild(container);
-        });
-    });
-});
+function flash(message, category='success') {
+  const flashDiv = document.createElement('div');
+  flashDiv.classList.add('flashes');
+  flashDiv.classList.add(`flashes-${category}`);
+  flashDiv.textContent = message;
+  document.body.appendChild(flashDiv);
+  setTimeout(() => {
+    flashDiv.remove();
+  }, 5000);
+}
 
 

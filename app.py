@@ -34,37 +34,46 @@ def index():
 
     if request.method == 'POST':
         form = AddEntryForm()
-
         title = request.form['title']
         body = request.form['body']
-        tags = request.form['tags']
-    
+        tag_list = []
+        for tag in form.tag:
+            if tag.data:
+                tag_list.append(tag.label.text.strip())
+
         entry = models.Entry(title=form.title.data, 
             body=form.body.data, 
-            tags=form.tags.data, 
+            tag=', '.join(tag_list), 
             date=datetime.utcnow())
-        db.create_all()
         db.session.add(entry)
         db.session.commit()
-        flash("Entry added")
+        flash('New entry added')
+
+    return render_template('index.html', lst=lst)
+
     return render_template('index.html', lst=lst)
 
 @app.route("/submit_form", methods=["GET", "POST"])
 def submit_form():
-
     if request.method == 'POST':
-        form = AddEntryForm()
-
         title = request.form['title']
         body = request.form['body']
-        tags = request.form['tags']
-    
-        entry = models.Entry(title=form.title.data, body=form.body.data, tags=form.tags.data, date=datetime.utcnow())
+        tag_list = request.form.getlist('tag')
+        
+        entry = models.Entry(
+            title=title,
+            body=body,
+            tag=', '.join(tag_list),
+            date=datetime.utcnow()
+        )
         db.session.add(entry)
         db.session.commit()
+        flash('New entry added')
 
-        return redirect(url_for("index"))
-    return render_template('index.html', lst=lst)
+    return redirect(url_for('index'))
+
+
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
