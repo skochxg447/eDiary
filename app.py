@@ -21,13 +21,18 @@ from forms import AddEntryForm
 from forms import DeleteEntryForm
 import models
 
+
 # from routes import *
 @app.route("/")
 @app.route("/index", methods=["GET", "POST"])
 def index():
     conn = sqlite3.connect('instance/data.db')
     cur = conn.cursor()
-    entries = cur.execute('''SELECT * FROM entry''')
+    try: 
+        entries = cur.execute('''SELECT * FROM entry''')
+    except sqlite3.OperationalError:
+        db.create_all()
+        entries = cur.execute('''SELECT * FROM entry''')
     lst = entries.fetchall()
 
 
