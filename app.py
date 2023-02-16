@@ -10,7 +10,6 @@ from flask import (
 )
 from datetime import datetime
 import sqlite3
-import tkinter as tk 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret-key"
